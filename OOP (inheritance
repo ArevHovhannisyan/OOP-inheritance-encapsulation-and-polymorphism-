@@ -1,0 +1,66 @@
+// Inheritance - is allow to create a new class-Child of class-Parent.And all of
+//               characteristics in class-Parent assigned to class-Child.
+// Encapsulation - this function is allowed to connected in class methods and data,
+//                 working him and to hide implementation of details from the user.
+// Polimorphism - is a property in class, which allow to useful objects in class of one 
+//                interface, don't have any information on data type and struct object.
+
+
+// Создать класс Man (человек), с полями: имя, возраст и вес. 
+// Определить методы переназначения имени, изменения возраста и изменения веса. 
+// Создать производный класс Student, имеющий поле года обучения.
+// Определить методы переназначения и увеличения года обучения.
+
+#include <iostream>
+using namespace std;
+
+class Man
+{
+    private:
+        string _name;
+        int _weigth;
+        int _age;
+};
+
+class Student : public Man
+{
+    private:
+        string _name;
+        int _weigth;
+        int _age;
+        int _year;
+    
+    public:
+        void setInformation(string name, int weigth, int age, int year)
+        {
+            _name = name;
+            _weigth = weigth;
+            _age = age;
+            _year = year;
+        }
+        
+        string print(string name, int weigth, int age, int year)
+        {
+            string info = "";
+            info += "Name: " + _name + "\n";
+            info += "Weigth: " + to_string(weigth) + "\n";
+            info += "Age: " + to_string(age) + "\n";
+            info += "Year: " + to_string(year) + "\n";
+            
+            return info;
+        }
+        
+        void AddYear(int year)
+        {
+            _year = year;
+        }
+};
+
+int main()
+{
+    Student s;
+    s.setInformation("Ann", 50, 25, 2020);
+    cout << s.print("Ann", 50, 25, 2020);
+    
+    return 0;
+}
